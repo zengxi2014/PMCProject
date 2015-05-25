@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="conststruts.devMode" value="true"/>
+	
+	<package name="PMC" namespace="/" extends="struts-default">
+		
+		
+		<action name="receiveCrackReport" class="com.pmc.crackanalyse.action.ReceiveCrackReport">
+			
+		</action>
+		
+		<action name="receiveActivityInfo" class="com.pmc.crackanalyse.action.ReceiveActivityInfo">
+			
+		</action>
+		
+		<action name="jsonTest" class="com.pmc.JSONTest.JSONTest">
+			
+		</action>
+		
+		<action name="receiveActivityRouteInfo" class="com.pmc.Activityroute.action.ReceiveActivityRoute">
+			
+		</action>
+		
+		<action name="receiveFragmentInfo" class="com.pmc.fragmentInfo.action.FragmentInfoAction">
+			
+		</action>
+		
+		<action name="loadCrackReport!*" class="com.pmc.crackanalyse.action.loadCrackReport" method="{1}">
+		</action>
+		
+	</package>
+</struts>
