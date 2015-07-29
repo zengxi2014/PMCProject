@@ -18,6 +18,7 @@ public class ReceiveActivityRoute  {
 	private ActivityRouteInfoBasicService activityRouteInfoService = new ActivityRouteInfoBasicService(); 
 	 
     public void execute()throws JSONException, IOException{
+		System.out.println("123123");
 		String jsonStr = PMCJSONUtils.readJSONStringFromHttpRequest(ServletActionContext.getRequest());	
 		/*
 		System.out.println(jsonStr);

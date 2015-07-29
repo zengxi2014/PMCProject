@@ -11,11 +11,7 @@
 		<action name="receiveCrackReport" class="com.pmc.crackanalyse.action.ReceiveCrackReport">
 			
 		</action>
-		
-		<action name="receiveActivityInfo" class="com.pmc.crackanalyse.action.ReceiveActivityInfo">
-			
-		</action>
-		
+
 		<action name="jsonTest" class="com.pmc.JSONTest.JSONTest">
 			
 		</action>
@@ -27,8 +23,31 @@
 		<action name="receiveFragmentInfo" class="com.pmc.fragmentInfo.action.FragmentInfoAction">
 			
 		</action>
-		
+
+		<action name="receiveMemoryInfo" class="com.pmc.MemoryInfo.action.ReceiveMemoryInfo">
+
+		</action>
+
+		<action name="receiveCPUInfo" class="com.pmc.CpuInfo.action.ReceiveCpuInfo">
+
+		</action>
+
+		<action name="receiveRegistInfo" class="com.pmc.RegistInfo.action.ReceiveRegistInfo">
+
+		</action>
+
+		<action name="getActivityRouteInfo" class="com.pmc.Activityroute.action.getActivityRouteAction">
+
+		</action>
+
 		<action name="loadCrackReport!*" class="com.pmc.crackanalyse.action.loadCrackReport" method="{1}">
+
+	</action>
+
+		<action name="receiveLoginInfo" class="com.pmc.LoginInfo.ReceiveLoginInfoActivity">
+		</action>
+
+		<action name="receiveActivityInfo" class="com.pmc.ActivityInfo.action.ReceiveActivityInfoAction">
 		</action>
 		
 	</package>

@@ -34,13 +34,14 @@ public class SpringMongoDBTest {
 //    public void testSayHello() {
 //         System.out.println("hello,world");
 //    }
-
+    @Autowired
+    MongoTemplate mongoTemplate;
     @Test
     public void testMongoConnect() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
         MongoOperations  mo = (MongoOperations)ac.getBean("mongoTemplate");
-       // mo.remove(new Query(Criteria.where("_id").is("5559bfe6e039fb36082da356")),"ActivityInfo");
-        DBCollection collection =  mo.getCollection("ActivityInfo");
+//        mo.remove(new Query(Criteria.where("_id").is("5559bfe6e039fb36082da356")),"ActivityInfo");
+        DBCollection collection =  mongoTemplate.getCollection("ActivityInfo");
         DBObject obj = new BasicDBObject();
         obj.put("appId","85d4a553-ee8d-4136-80ab-2469adcae44d");
         DBCursor cursor =  collection.find(obj);
