@@ -26,8 +26,8 @@ import org.junit.Test;
 
 public class CrackReportBasicService {
 
-    public JSONObject findCrashReportByHashCode(String hashCode) throws ParseException, UnknownHostException {
-        DBCollection crashTypeReportCollection = CommonDBManager.MongoDBConnect("CrashTypeReport");
+    public static JSONObject findCrashReportByHashCode(String hashCode) throws ParseException, UnknownHostException {
+        DBCollection crashTypeReportCollection = CommonDBManager.MongoDBConnect("CrashReport");
         DBObject obj = new BasicDBObject();
         obj.put("hashCode",hashCode);
         DBCursor cursor = crashTypeReportCollection.find(obj);
@@ -100,8 +100,8 @@ public class CrackReportBasicService {
     }
 
     @Test
-    public void Test()  throws UnknownHostException {
-        JSONObject obj =  findAllCrashTypeReportByHashCode("-834561363");
+    public static void Test() throws UnknownHostException, ParseException {
+        JSONObject obj =  findCrashReportByHashCode("-834561363");
         System.out.println(obj.toString());
     }
 

@@ -18,6 +18,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.LinkedList;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
@@ -63,7 +64,30 @@ public class ActivityRouteInfoBasicService {
         }
 		return resultList;
 	}
-
+    public List<List<String>> getRoutes(String appId){
+        List<ActivityRoute> activityRoutes=findListByAppId(appId);
+        if(activityRoutes==null)return null;
+        else{
+            List<List<String>> routes= new LinkedList<>();
+            for(int i=0;i<activityRoutes.size();i++) {
+                ActivityRoute activityRoute = activityRoutes.get(i);
+                List<Route>record=activityRoute.getRoute();
+                List<String> route = new LinkedList<>();
+                for (int j=0;j<record.size()-1;j++){
+                    //过滤掉停留时间少于2秒的页面，其中包含0.5秒的默认加载时间，视为无效节点
+                    if(record.get(j+1).getCreateTime()-record.get(j).getCreateTime()>=2000) {
+                        route.add(record.get(j).getName().substring(record.get(j).getName().lastIndexOf(".") + 1));
+                    }
+                }
+                route.add(record.get(record.size()-1).getName().substring(record.get(record.size()-1).getName().lastIndexOf(".") + 1));
+                //过滤加载页面较多或者会话时间超过30min的异常记录
+                if(route.size()<=21&&record.get(record.size()-1).getCreateTime()-record.get(0).getCreateTime()<=1800000)
+                    routes.add(route);
+            }
+            // System.out.println(routes);
+            return routes;
+        }
+    }
     @Test
     public  void testDB(){
        List<ActivityRoute> result = findListByAppId("85d4a553-ee8d-4136-80ab-2469adcae44d");

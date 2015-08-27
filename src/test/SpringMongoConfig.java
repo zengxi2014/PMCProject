@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class SpringMongoConfig extends AbstractMongoConfiguration {
     @Override
     public @Bean Mongo mongo() throws Exception {
-        return new Mongo("localhost");
+        return new Mongo("125.216.242.117",27017);
     }
     @Override
     public @Bean

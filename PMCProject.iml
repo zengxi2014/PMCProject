@@ -4,6 +4,19 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/out/artifacts/PMCProject_war_exploded/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/out/artifacts/PMCProject_war_exploded" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
@@ -13,22 +26,12 @@
           <root url="file://$MODULE_DIR$/src" />
         </sourceRoots>
       </configuration>
-      <facet type="Struts2" name="Struts 2">
-        <configuration>
-          <fileset id="s2fileset" name="My Fileset " removed="false">
-            <file>file://$MODULE_DIR$/src/struts.xml</file>
-            <file>jar://$MODULE_DIR$/web/WEB-INF/lib/struts2-core.jar!/struts-default.xml</file>
-          </fileset>
-          <propertiesKeys disabled="false" />
-        </configuration>
-      </facet>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context2" removed="false">
-          <dependency>fileset</dependency>
-          <file>file://$MODULE_DIR$/src/com/pmc/utils/MongoDBManage/SpringMongoConfig.java</file>
-          <file>file://$MODULE_DIR$/src/test/SpringMongoConfig.java</file>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/out/artifacts/PMCProject_war_exploded/WEB-INF/classes/spring-config.xml</file>
+          <file>file://$MODULE_DIR$/out/production/PMCProject/spring-config.xml</file>
           <file>file://$MODULE_DIR$/resource/spring-config.xml</file>
         </fileset>
       </configuration>
@@ -42,7 +45,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.57" level="application_server_libraries" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" name="lib2" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
