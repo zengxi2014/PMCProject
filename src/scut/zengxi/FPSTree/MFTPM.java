@@ -20,13 +20,19 @@ public class MFTPM {
 	/**
 	 * 初始化函数
 	 */
-	public static void init() {
-		fstree = new MFSTree();
-		fstree.setMinSuport(10.0f);   //设置最小支持度
+	public static void init(String minSup) {
 /*		List<List<String>> transRecords = fstree
 				.readTransRocords("E:\\新建文件夹\\sequence.txt");*/
 		ActivityRouteInfoBasicService activityRouteInfoBasicService = new ActivityRouteInfoBasicService();
 		transRecords = activityRouteInfoBasicService.getRoutes("85d4a553-ee8d-4136-80ab-2469adcae44d");
+		fstree = new MFSTree();
+		float Sup=0.0f;
+		if(minSup.indexOf("%")!=-1){
+			Sup=Float.parseFloat(minSup.substring(0,minSup.length()-1))/100*transRecords.size();
+		}else{
+			Sup=Float.parseFloat(minSup);
+		}
+		fstree.setMinSuport(Sup);   //设置最小支持度
 		for(int i=0;i<transRecords.size();i++){
 			System.out.println(transRecords.get(i));
 		}
@@ -251,9 +257,9 @@ public class MFTPM {
 	 * 获取极大频繁序列挖掘结果的接口函数
 	 * @return
 	 */
-    public static JSONArray getMFSResults(){
+    public static JSONArray getMFSResults(String minSup){
 		List<FreqSeqBean> freqSequences= new LinkedList<FreqSeqBean>();
-		init();
+		init(minSup);
 		try{
 			findPrePages(HeaderTable);
 		}catch (NullPointerException e){
@@ -283,7 +289,7 @@ public class MFTPM {
 
 	@Test
 	public void testGetMFSResults(){
-		getMFSResults();
+		getMFSResults("50%");
 	}
 }
 
